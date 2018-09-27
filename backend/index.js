@@ -11,7 +11,6 @@ const userRouter = require('./routers/user.js');
 app.use('/users', userRouter);
 
 
-
 var mongoose = require("mongoose");
 // mongo --host sigteste.sti.ufpb.br --port 5556 -u csiadmin -p 'c$!s3cret' --authenticationDatabase 'admin'
 mongoose.connect(
