@@ -1,79 +1,26 @@
 import React, { Component } from 'react';
 import './chat.css';
+import ChatPeople from './ChatPeople';
 
 export default class InboxChat extends Component {
-  render() {
-    return (
-      <div class="inbox_chat">
-                                    <div class="chat_list active_chat">
-                                        <div class="chat_people">
-                                            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> 
-                                            </div>
-                                                <div class="chat_ib">
-                                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                    <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat_list">
-                                            <div class="chat_people">
-                                                <div class="chat_img"> 
-                                                <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> 
-                                                </div>
-                                                    <div class="chat_ib">
-                                                        <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                        <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="chat_list">
-                                                <div class="chat_people">
-                                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> 
-                                                    </div>
-                                                        <div class="chat_ib">
-                                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                            <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="chat_list">
-                                                    <div class="chat_people">
-                                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                                            <div class="chat_ib">
-                                                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                                <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="chat_list">
-                                                        <div class="chat_people">
-                                                            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                                                <div class="chat_ib">
-                                                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                                    <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="chat_list">
-                                                            <div class="chat_people">
-                                                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                                                    <div class="chat_ib">
-                                                                        <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                                        <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="chat_list">
-                                                                <div class="chat_people">
-                                                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                                                        <div class="chat_ib">
-                                                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                                            <p>Test, which is a new approach to have all solutions astrology under one roof.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-        
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div class="inbox_chat">
+                <ChatPeople image="https://ptetutorials.com/images/user-profile.png" name="Sunil Rajput" date="Dec 25" 
+                            message="Test, which is a new approach to have all solutions astrology under one roof." active_chat="true" />
+                <ChatPeople image="https://ptetutorials.com/images/user-profile.png" name="Sunil Rajput" date="Dec 25" 
+                            message="Test, which is a new approach to have all solutions astrology under one roof."  />
+                <ChatPeople image="https://ptetutorials.com/images/user-profile.png" name="Sunil Rajput" date="Dec 25" 
+                            message="Test, which is a new approach to have all solutions astrology under one roof."  />
+                <ChatPeople image="https://ptetutorials.com/images/user-profile.png" name="Sunil Rajput" date="Dec 25" 
+                            message="Test, which is a new approach to have all solutions astrology under one roof."  />
+                <ChatPeople image="https://ptetutorials.com/images/user-profile.png" name="Sunil Rajput" date="Dec 25" 
+                            message="Test, which is a new approach to have all solutions astrology under one roof."  />
+                <ChatPeople image="https://ptetutorials.com/images/user-profile.png" name="Sunil Rajput" date="Dec 25" 
+                            message="Test, which is a new approach to have all solutions astrology under one roof."  />
+                <ChatPeople image="https://ptetutorials.com/images/user-profile.png" name="Sunil Rajput" date="Dec 25" 
+                            message="Test, which is a new approach to have all solutions astrology under one roof."  />
+            </div>
+        )
+    }
 }
