@@ -6,17 +6,17 @@ import './chat.css';
 class Messaging extends Component {
     render() {
         return (
-            <div class="container">
-                <h3 class=" text-center">Messaging</h3>
-                <div class="messaging">
-                    <div class="inbox_msg">
+            <div className="container">
+                <h3 className=" text-center">Bate Papo</h3>
+                <div className="messaging">
+                    <div className="inbox_msg">
                         <InboxPeople />
                         <Mesgs />
                     </div>
-                     <p class="text-center top_spac"> Design by <a target="_blank" href="jsx-a11y/href-no-hash">Sunil Rajput</a></p>
+                     <p className="text-center top_spac"> Design by <a target="_blank" href="jsx-a11y/href-no-hash">Sunil Rajput</a></p>
                 </div>
             </div>
-        );
+        ); 
     }
 }
                                                         

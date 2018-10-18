@@ -6,7 +6,7 @@ import './chat.css';
 export default class InboxPeople extends Component {
   render() {
     return (
-      <div class="inbox_people">
+      <div className="inbox_people">
         <HeadingSrch />
         <InboxChat />
       </div>
