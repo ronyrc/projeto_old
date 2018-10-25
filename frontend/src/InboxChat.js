@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import './chat.css';
 import ChatPeople from './ChatPeople';
-import axios from 'axios';
-
-const instance = axios.create({
-    baseURL: 'http://localhost:3001',
-    timeout: 10000,
-    headers: { 'X-Custom-Header': 'foobar' }
-})
+import instance from './axios';
 
 export default class InboxChat extends Component {
     constructor(props) {

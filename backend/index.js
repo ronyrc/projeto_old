@@ -42,12 +42,13 @@ passport.use(
   )
 );
 
+const User = require('./models/user');
 const passportLocal = require("passport-local");
 /** local strategy */
 passport.use("local",
   new passportLocal.Strategy({ usernameField: "email", passwordField: "password" }, function (email, password, cb) {
     // verificando sem banco
-    if (email === "@" && password === "123") {
+   /* if (email === "@" && password === "123") {
       return cb(null, {
         _id: 1,
         name: "Ricardo",
@@ -58,10 +59,8 @@ passport.use("local",
       return cb(null, false, {
         message: "Incorrect email or password. 1"
       });
-    }
-
-
-    /*return User.findOne({ email })
+    } */
+    return User.findOne({ email })
       .then(user => {
         if (!user) { return cb(null, false, { message: "Incorrect email or password. 1" }); }
         user
@@ -74,7 +73,7 @@ passport.use("local",
       .catch(err => {
         console.log(err);
         return cb(err);
-      }); */
+      }); 
   }));
 
 const authRouter = require('./routers/auth');
