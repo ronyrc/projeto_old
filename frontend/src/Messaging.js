@@ -9,6 +9,7 @@ import instance from './axios';
 
 class Messaging extends Component {
     state = {
+        roomSelected: null,
         rooms: []
     }
 
@@ -24,15 +25,21 @@ class Messaging extends Component {
         }
     }
 
+    handleClick(room) {
+        this.setState({roomSelected: room});
+    }
+
     render() {
-        const { rooms } = this.state;
+        const { rooms, roomSelected } = this.state;
         return (
             <div className="container">
                 <h3 className=" text-center">Bate Papo</h3>
                 <div className="messaging">
                     <div className="inbox_msg">
-                        <InboxPeople rooms={rooms} />
-                        <PrivateRoot path='/chat' component={Mesgs}  rooms={rooms} />
+                        <InboxPeople  handleClick={this.handleClick.bind(this)}
+                                      room={roomSelected} 
+                                      rooms={rooms} />
+                        <PrivateRoot path='/chat' component={Mesgs} room={roomSelected} />
                         {/* Quando usa o render precisa passar o history */}
                         <Route path='/login' render={({history}) => {
                             return <Login history={history} />

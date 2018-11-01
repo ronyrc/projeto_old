@@ -12,8 +12,10 @@ export default class Mesgs extends Component {
 
     handleClick() {
         const { message } = this.state;
-        const { room } = this.props;
-        socket.emit(room._id, {message});
+        // const { room } = this.props;
+        socket.emit('sala1', { message });
+        // Limpar a mensagem do Input
+        this.setState({message: ''});
     }
 
 

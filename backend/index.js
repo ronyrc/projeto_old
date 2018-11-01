@@ -95,6 +95,10 @@ db.once("open", function () {
   io.on('connection', (socket) => {
      console.log('Cliente conectado via socket');
 
+     socket.on('sala1', data => {
+       console.log(data);
+     });
+
   /*   setInterval(() => {
       socket.emit('evento1', {time: new Date()});
     }, 1000);

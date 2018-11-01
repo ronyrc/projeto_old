@@ -8,7 +8,7 @@ export default class InboxPeople extends Component {
     return (
       <div className="inbox_people">
         <HeadingSrch />
-        <InboxChat rooms={this.props.rooms} />
+        <InboxChat handleClick={this.props.handleClick} roomSelected={this.props.room} rooms={this.props.rooms} />
       </div>
     )
   }
