@@ -8,7 +8,7 @@ export default class InboxPeople extends Component {
     return (
       <div className="inbox_people">
         <HeadingSrch />
-        <InboxChat />
+        <InboxChat rooms={this.props.rooms} />
       </div>
     )
   }

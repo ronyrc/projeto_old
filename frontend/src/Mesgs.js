@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
 import IncomingMsg from './IncomingMsg';
 import OutgoingMsg from './OutgoingMsg';
+import io from 'socket.io-client';
+const socket = io('http://localhost:3001');
 
 export default class Mesgs extends Component {
+
+    state = {
+        message: ''
+    }
+
+    handleClick() {
+        const { message } = this.state;
+        const { room } = this.props;
+        socket.emit(room._id, {message});
+    }
+
+
     render() {
         return (
             <div className="mesgs">
@@ -15,8 +29,11 @@ export default class Mesgs extends Component {
                 </div>
                 <div className="type_msg">
                     <div className="input_msg_write">
-                        <input type="text" className="write_msg" placeholder="Digite uma mensagem" />
-                        <button className="msg_send_btn" type="button"><i className="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                        <input defaultValue={this.state.message} 
+                               onChange={(e) => {this.setState({message: e.target.value})}}
+                               type="text" className="write_msg" placeholder="Digite uma mensagem" />
+                        <button onClick={this.handleClick.bind(this)}
+                                className="msg_send_btn" type="button"><i className="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                     </div>
                 </div>
 

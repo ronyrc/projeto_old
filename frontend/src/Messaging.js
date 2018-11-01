@@ -4,17 +4,35 @@ import Mesgs from './Mesgs';
 import './chat.css';
 import PrivateRoot from './components/PrivateRoot';
 import {Route} from 'react-router-dom';
-import Login from './containers/Login'
+import Login from './containers/Login';
+import instance from './axios';
 
 class Messaging extends Component {
+    state = {
+        rooms: []
+    }
+
+    async componentDidMount() {
+        try {
+            const result = await instance.get('/rooms');
+            console.log(result);
+            this.setState({
+                rooms: result.data
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     render() {
+        const { rooms } = this.state;
         return (
             <div className="container">
                 <h3 className=" text-center">Bate Papo</h3>
                 <div className="messaging">
                     <div className="inbox_msg">
-                        <InboxPeople />
-                        <PrivateRoot path='/chat' component={Mesgs} />
+                        <InboxPeople rooms={rooms} />
+                        <PrivateRoot path='/chat' component={Mesgs}  rooms={rooms} />
                         {/* Quando usa o render precisa passar o history */}
                         <Route path='/login' render={({history}) => {
                             return <Login history={history} />

@@ -10,6 +10,14 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json({ extended: true }));
 const cors = require("cors");
 app.use(cors()); //TODO - Mudar para que nao permita requisicoes de todos os servidores
+
+//socket
+const socketIo = require('socket.io');
+const http = require('http');
+
+var server = http.createServer(app);
+const io = socketIo(server);
+
 //routes
 const { protectByToken } = require('./midd/auth');
 
@@ -48,7 +56,9 @@ passport.use("local",
       return cb(null, false, {
         message: "Incorrect email or password. 1"
       });
-    } */
+    } 
+    //// admin@gmail.com | 123456
+    */
     return User.findOne({ email })
       .then(user => {
         if (!user) { return cb(null, false, { message: "Incorrect email or password. 1" }); }
@@ -82,7 +92,19 @@ db.on("error", (a, b) => console.error("connection error:", a, b));
 db.once("open", function () {
   // we're connected!
   console.log("we're connected!");
-  app.listen(PORT, HOSTNAME, () => {
-    console.log(`Server listning on ${HOSTNAME}:${PORT}`);
+  io.on('connection', (socket) => {
+     console.log('Cliente conectado via socket');
+
+  /*   setInterval(() => {
+      socket.emit('evento1', {time: new Date()});
+    }, 1000);
+
+    setInterval(() => {
+      socket.emit('evento1', {name: 'Rony'});
+    }, 2000); */
+  });
+
+  server.listen(PORT, HOSTNAME, () => {
+    console.log(`Server listening on ${HOSTNAME}:${PORT}`);
   });
 });
