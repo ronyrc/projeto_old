@@ -38,6 +38,8 @@ export default class Login extends Component {
         .then((result) => {
             console.log(result);
             sessionStorage.setItem('token', result.data.token);
+            // redirecionando para o chat se está tudo OK
+            this.props.history.push('/chat');
         })
         .catch((err) => {
             console.log(err);

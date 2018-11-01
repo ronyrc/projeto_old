@@ -11,18 +11,7 @@ app.use(express.json({ extended: true }));
 const cors = require("cors");
 app.use(cors()); //TODO - Mudar para que nao permita requisicoes de todos os servidores
 //routes
-
-function protectByToken(req, res, next) {
-  const authenticate = passport.authenticate("jwt-string-secret", { session: false },
-    (err, user, info) => {
-      if (err || !user) {
-        return res.status(403).json({ ...info });
-      }
-      return next();
-    }
-  );
-  authenticate(req, res, next);
-}
+const { protectByToken } = require('./midd/auth');
 
 // configuracao das strategias de exportacao
 const passportJWT = require("passport-jwt");
@@ -81,7 +70,7 @@ app.use('/auth', authRouter);
 const userRouter = require("./routers/user");
 app.use("/users", userRouter);
 const roomsRouter = require("./routers/rooms");
-app.use('/rooms', protectByToken, roomsRouter);
+app.use('/rooms', roomsRouter);
 var mongoose = require("mongoose");
 // mongo --host sigteste.sti.ufpb.br --port 5556 -u csiadmin -p 'c$!s3cret' --authenticationDatabase 'admin'
 mongoose.connect(
