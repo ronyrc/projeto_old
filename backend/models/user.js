@@ -3,5 +3,12 @@ const UserSchema = new mongoose.Schema({
   email: String,
   password: String
 });
-const User = mongoose.model("rony.User", UserSchema);
+
+UserSchema.methods.checkPassword = function(password, cb) {
+  return new Promise((resolve, reject) => {
+    resolve(password === this.password)
+  })
+};
+
+const User = mongoose.model("ricardo.User", UserSchema);
 module.exports = User
