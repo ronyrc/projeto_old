@@ -24,6 +24,8 @@ export default class ChatRoom extends Component {
   render() {
     const { message } = this.state;
     const { handleSendMessage, rooms, color } = this.props;
+    console.log(rooms)
+    // if (!rooms) return <div/>
     const roomsFilter = rooms.filter(r => r._id === this.props.match.params.id);
     const room = roomsFilter[0];
     if (!room) return <div/>

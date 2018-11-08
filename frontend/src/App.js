@@ -25,29 +25,32 @@ class App extends Component {
       }));
 
       const token = sessionStorage.getItem("token")
-      const { username, color } = jwt.decode(token);
-      
-
+      const decode = jwt.decode(token);
+    
+        
       rooms.forEach(room => {
         socket.on(room._id, (data) => {
           const include = this.props.location.pathname.includes(room._id);
           this.setState(previousState => ({
             rooms: previousState.rooms.map(r => {
-              if (r._id === room._id) 
+              const username = decode.username;
+              if (r._id === room._id)
                 return {
-                  ...r, 
+                  ...r,
                   messages: username !== data.username ? [...r.messages, { receiving: true, ...data }] : r.messages,
                   unread: !include ? (r.unread || 0) + 1 : null
                 };
               return r
             })
           }))
-        });  
+        });
       })
       
-      this.setState({ rooms});
+        
+      
+      this.setState({ rooms });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
 
   }
@@ -70,7 +73,7 @@ class App extends Component {
 
   render() {
     const { rooms } = this.state;
-    
+    console.log(rooms)
     return <Container>
         <div className="messaging m-3">
           <div className="inbox_msg">
@@ -82,7 +85,7 @@ class App extends Component {
                 <Switch>
                   <Route path="/login" component={LoginChat} />
                   <PrivateRoute path="/rooms/:id" rooms={rooms} handleSendMessage={this.sendMessageClick.bind(this)} component={ChatRoom} />
-                  <Redirect to="/rooms" />
+                  <Redirect to="/login" />
                 </Switch>
               </Col>
             </Row>
